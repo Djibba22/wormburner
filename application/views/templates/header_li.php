@@ -19,12 +19,11 @@
 </head>
 <body>
 <header>
-
 <div class="row">
-  <div class="small-2 large-12 columns">
-  	<img class="text-center" src="<?php echo $resources;?>img/Green-icon.png" height="50" width="100"> 
-	<a href="/index.php/auth/index" class="button right">Login</a>
-	<a href="/index.php/auth/create_user" class="button right">Sign Up</a>
-  </div>
+  <div class="small-2 large-4 columns">
+ <img src="" alt="" height="100" width="100">
+	<a href="/index.php/auth/logout" class="button">Logout</a>
 
+ </div>
+</div>
 </header>

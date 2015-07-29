@@ -17,21 +17,24 @@ class Auth extends CI_Controller {
 	// redirect if needed, otherwise display the user list
 	function index()
 	{
-
+		// Not logged in
 		if (!$this->ion_auth->logged_in())
 		{
 			// redirect them to the login page
 			redirect('auth/login', 'refresh');
 		}
+		// Not Admin
 		elseif (!$this->ion_auth->is_admin()) // remove this elseif if you want to enable this for non-admins
 		{
-			$this->load->view('templates/header', $data);
-			$this->_render_page('/', $this->data);
+			$this->data['title'] = "Dashboard";
+			$this->load->view('templates/header');
+			$this->_render_page('pages/user_dashboard', $this->data);
 			$this->load->view('templates/footer');
 			// redirect them to the home page because they must be an administrator to view this
 			return show_error('You must be an administrator to view this page.');
 		}
-		else
+		// Are logged in
+		elseif ($this->ion_auth->is_admin())
 		{
 			// set the flash data error message if there is one
 			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
@@ -42,8 +45,10 @@ class Auth extends CI_Controller {
 			{
 				$this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
 			}
-
+			
+			$this->load->view('templates/header_li');
 			$this->_render_page('auth/index', $this->data);
+			$this->load->view('templates/footer');
 		}
 	}
 
@@ -67,7 +72,15 @@ class Auth extends CI_Controller {
 				//if the login is successful
 				//redirect them back to the home page
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				redirect('/', 'refresh');
+	
+				//view redirect for admin login
+				if ($this->ion_auth->is_admin()){
+					redirect('auth/index', 'refresh');
+	
+				} else {
+					redirect('dashboard', 'refresh');	
+				}
+				
 			}
 			else
 			{
@@ -157,7 +170,9 @@ class Auth extends CI_Controller {
 			);
 
 			// render
+			$this->load->view('templates/header_li', $this->data);
 			$this->_render_page('auth/change_password', $this->data);
+			$this->load->view('templates/footer');
 		}
 		else
 		{
@@ -210,7 +225,11 @@ class Auth extends CI_Controller {
 
 			// set any errors and display the form
 			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+
+			$this->load->view('templates/header', $this->data);
 			$this->_render_page('auth/forgot_password', $this->data);
+			$this->load->view('templates/footer');
+			
 		}
 		else
 		{
@@ -301,7 +320,9 @@ class Auth extends CI_Controller {
 				$this->data['code'] = $code;
 
 				// render
+				$this->load->view('templates/header', $this->data);
 				$this->_render_page('auth/reset_password', $this->data);
+				$this->load->view('templates/footer');
 			}
 			else
 			{
@@ -391,8 +412,10 @@ class Auth extends CI_Controller {
 			// insert csrf check
 			$this->data['csrf'] = $this->_get_csrf_nonce();
 			$this->data['user'] = $this->ion_auth->user($id)->row();
-
+			
+			$this->load->view('templates/header', $this->data);
 			$this->_render_page('auth/deactivate_user', $this->data);
+			$this->load->view('templates/footer');
 		}
 		else
 		{
@@ -422,10 +445,10 @@ class Auth extends CI_Controller {
 	{
 		$this->data['title'] = "Create User";
 
-		if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
-		{
-			redirect('auth', 'refresh');
-		}
+		// if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
+		// {
+		// 	redirect('auth', 'refresh');
+		// }
 
 		$tables = $this->config->item('tables','ion_auth');
 
@@ -506,8 +529,10 @@ class Auth extends CI_Controller {
 				'type'  => 'password',
 				'value' => $this->form_validation->set_value('password_confirm'),
 			);
-
+			
+			$this->load->view('templates/header', $this->data);
 			$this->_render_page('auth/create_user', $this->data);
+			$this->load->view('templates/footer');
 		}
 	}
 
@@ -658,8 +683,10 @@ class Auth extends CI_Controller {
 			'id'   => 'password_confirm',
 			'type' => 'password'
 		);
-
+		
+		$this->load->view('templates/header', $this->data);
 		$this->_render_page('auth/edit_user', $this->data);
+		$this->load->view('templates/footer');
 	}
 
 	// create a new group
@@ -704,8 +731,11 @@ class Auth extends CI_Controller {
 				'type'  => 'text',
 				'value' => $this->form_validation->set_value('description'),
 			);
-
+			
+		
+			$this->load->view('templates/header', $this->data);
 			$this->_render_page('auth/create_group', $this->data);
+			$this->load->view('templates/footer');
 		}
 	}
 
@@ -769,8 +799,9 @@ class Auth extends CI_Controller {
 			'type'  => 'text',
 			'value' => $this->form_validation->set_value('group_description', $group->description),
 		);
-
+		$this->load->view('templates/header', $this->data);
 		$this->_render_page('auth/edit_group', $this->data);
+		$this->load->view('templates/footer');
 	}
 
 

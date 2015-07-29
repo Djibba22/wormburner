@@ -49,11 +49,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
+// These are the auth Pages//
+$route['auth'] 					= 'auth/index';
+$route['auth/login'] 			= 'auth/login';
+$route['auth/create_user'] 		= 'auth/create_user';
 
-$route['auth'] = 'auth/index';
-$route['auth/login'] = 'auth/login';
-$route['news/create'] = 'news/create';
-$route['news/(:any)'] = 'news/view/$1';
-$route['news'] = 'news';
-$route['default_controller'] = 'pages/view';
-$route['(:any)'] = 'pages/view/$1';
+// These routes are form the News Controller//
+$route['news'] 					= 'news';
+$route['news/(:any)'] 			= 'news/view/$1';
+$route['news/create'] 			= 'news/create';
+
+// Routes are from the Pages Controller//
+$route['default_controller'] 	= 'pages';
+$route['pages/(:any)'] 			= 'pages/view/$1';
+$route['dashboard'] 			= 'pages/dashboard';
+$route['dashboard'] 			= 'API/view';
+
+// this is the URL location   // This is the method name
+
+
+
+
+
+
+
