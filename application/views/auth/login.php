@@ -2,19 +2,19 @@
     $base_url = $this->config->item('base_url'); 
     $resources = $this->config->item('resources');
 ?>
-<div class="small-12 medium-6 large-6 columns">
+<div class="large-12 center-columns ">
         <div class="row">
           <div class="small-6 medium-12 medium-centered columns">
-            <img src="<?php echo $resources;?>img/prince.jpg" height="400" width="100">        
+            <!-- <img src="<?php echo $resources;?>img/trips.png" width="100">  -->       
           </div>
-          <div class="small-6 medium-12 medium-centered  columns">
-            <img src="<?php echo $resources;?>img/prince.jpg" height="400" width="100">
+          <div class="large-12 center-columns">
+           <!--  <img src="<?php echo $resources;?>img/trips.png" height="400" width="100"> -->
           </div>   
         </div>
       </div>
-<div class="login">
+<div class="loginpage">
   <div class="row">
-    <div class="large-12 columns text-center">
+    <div class="large-12 center-columns">
     <h1><?php echo lang('login_heading');?></h1>
     <p><?php echo lang('login_subheading');?></p>
   </div>
@@ -22,7 +22,7 @@
 
   <div class="row">
         <div class="loginimg">
-            <img src="<?php echo $resources;?>img/penta_ball.png" height="400" width="100">
+            <img src="<?php echo $resources;?>img/penta_ball.png"  width="100">
       </div>
       <div class="small-12 small-centered columns">
         <div id="infoMessage"><?php echo $message;?></div>

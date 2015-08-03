@@ -1,3 +1,7 @@
+<div class="row">
+    <div class="large-12 columns-center wrapper">
+    <div class="small-2 large-4 columns">
+
 <h2><?php echo $title ?></h2>
 
 <?php foreach ($news as $news_item): ?>
@@ -9,4 +13,7 @@
         <p><a href="<?php echo $news_item['slug'] ?>">View article</a></p>
 
 <?php endforeach ?>
+</div>
+</div>
+</div>
 

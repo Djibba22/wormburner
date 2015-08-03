@@ -226,7 +226,7 @@ class Auth extends CI_Controller {
 			// set any errors and display the form
 			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
 
-			$this->load->view('templates/header', $this->data);
+			$this->load->view('templates/header_li', $this->data);
 			$this->_render_page('auth/forgot_password', $this->data);
 			$this->load->view('templates/footer');
 			
@@ -413,7 +413,7 @@ class Auth extends CI_Controller {
 			$this->data['csrf'] = $this->_get_csrf_nonce();
 			$this->data['user'] = $this->ion_auth->user($id)->row();
 			
-			$this->load->view('templates/header', $this->data);
+			$this->load->view('templates/header_li', $this->data);
 			$this->_render_page('auth/deactivate_user', $this->data);
 			$this->load->view('templates/footer');
 		}
@@ -530,7 +530,7 @@ class Auth extends CI_Controller {
 				'value' => $this->form_validation->set_value('password_confirm'),
 			);
 			
-			$this->load->view('templates/header', $this->data);
+			$this->load->view('templates/header_li', $this->data);
 			$this->_render_page('auth/create_user', $this->data);
 			$this->load->view('templates/footer');
 		}
@@ -684,7 +684,7 @@ class Auth extends CI_Controller {
 			'type' => 'password'
 		);
 		
-		$this->load->view('templates/header', $this->data);
+		$this->load->view('templates/header_li', $this->data);
 		$this->_render_page('auth/edit_user', $this->data);
 		$this->load->view('templates/footer');
 	}
@@ -733,7 +733,7 @@ class Auth extends CI_Controller {
 			);
 			
 		
-			$this->load->view('templates/header', $this->data);
+			$this->load->view('templates/header_li', $this->data);
 			$this->_render_page('auth/create_group', $this->data);
 			$this->load->view('templates/footer');
 		}
@@ -799,7 +799,7 @@ class Auth extends CI_Controller {
 			'type'  => 'text',
 			'value' => $this->form_validation->set_value('group_description', $group->description),
 		);
-		$this->load->view('templates/header', $this->data);
+		$this->load->view('templates/header_li', $this->data);
 		$this->_render_page('auth/edit_group', $this->data);
 		$this->load->view('templates/footer');
 	}

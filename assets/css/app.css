@@ -1,16 +1,117 @@
+.row {
+	max-width: 1024px;
+	margin: 0 auto;
+}
+/*.container {
+	height: 100%;
+	overflow: auto;
+}*/
 header{
 	background-color: #222;
-	margin-top: 10px;
-	padding:10px;	
+	height: 100px;
+	/*padding:10px;	*/
 }
-.login{
-	margin-left: 25%;
+header.li {
+	background-color: #222;
+	height: 70px;
+	/*padding:10px;*/
+}
+
+.loginpage{
+	padding-left: 30%;
+}
+.wrapper {
+	width: 100%;
+	margin: 0 auto;
+	padding: 10px;
+}
+li {
+	list-style-type: none;
+}
+.card{
+	padding-left: 20%
 }
 .loginimg{
-	margin-left: 10%;
-	border-color: red;
+	margin-left: 10%;	
 }
-.result{
-	
+.ourbutton{
+	width: auto;
+    background: #429b3d;
+    border: 1px solid #1e728c;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 0 rgba(255,255,255,0.5) inset;
+    -moz-box-shadow: 0 1px 0 rgba(255,255,255,0.5) inset;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.5) inset;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1;
+    margin: 0 10px; 
+    padding: 10px 20px 11px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    -webkit-transition: background-color 0.15s ease-in-out;
+    -moz-transition: background-color 0.15s ease-in-out;
+    -o-transition: background-color 0.15s ease-in-out;
+    transition: background-color 0.15s ease-in-out;
+}
+.center{
+	margin: 0 auto;
+}
+.left{
+	float:left;
+}
+.right{
+	float:right;
+}
+#logo{
+	margin: 10px 0 0 0;
+	width: 10%;
+}
+.logo {
+	width: 100%;
+}
+#pga{	
+	width: 10%;
+}
+.pga {
+	width: 100%;
+}
+#nav{
+	margin: 22px 0; 	
+	width: 80%;
+}
+#nav_li{
+	margin: 22px 0; 	
+	width: 75%;
+}
+#radar {
+	width: 15%;
+}
+.radar {
+	margin: 22px 0;
+	width: 100%;
+}
 
+/* Footer Styles */
+footer{
+	background-color: #222;
+	height:50px;
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+}
+.copy {
+	color: orange;
+	height: 50px;
+	line-height: 50px;
+}
+.submitpad{
+	margin-bottom: 10px;
+	overflow: hidden;
 }
